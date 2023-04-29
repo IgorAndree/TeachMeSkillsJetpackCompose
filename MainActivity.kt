@@ -70,7 +70,7 @@ fun LoginScreen() {
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 280.dp),
+                .padding(bottom = 285.dp),
             value = password,
             onValueChange = {
                 password = it
