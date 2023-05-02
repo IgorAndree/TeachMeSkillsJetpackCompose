@@ -3,8 +3,10 @@ package com.example.teachmeskillscompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -23,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -40,7 +43,9 @@ fun LoginScreen() {
             .fillMaxSize()
             .background(color = Color.Green)
             .padding(all = 30.dp)
-    ) {
+    )
+
+    {
         var username by rememberSaveable { mutableStateOf("") }
         var password by rememberSaveable { mutableStateOf("") }
 
@@ -72,16 +77,20 @@ fun LoginScreen() {
                 .fillMaxWidth()
                 .padding(bottom = 285.dp),
             value = password,
+
             onValueChange = {
                 password = it
             },
             label = { Text("Please enter a password") }
-
         )
 
-        OutlinedButton(onClick = {
-
-        }) {
+        OutlinedButton(colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.Green,
+            contentColor = Color.Yellow
+        ),
+            border = BorderStroke(1.dp, Color.Yellow),
+            onClick = {
+            }) {
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -89,7 +98,6 @@ fun LoginScreen() {
                 text = "Login",
                 fontFamily = FontFamily.Serif,
                 fontSize = 25.sp,
-                color = Color.Green,
                 textAlign = TextAlign.Center
             )
         }
